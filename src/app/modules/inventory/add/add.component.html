@@ -17,15 +17,16 @@
         </div>
         <div>
           <button
-            class="btn btn-tsk-save font-weight-bold text-uppercase"
+            class="btn btn-success font-weight-bold text-uppercase"
             data-wizard-type="action-submit"
             (click)="onSubmit()"
+            [disabled]="formGroup.invalid"
           >
             Kaydet
           </button>
         </div>
       </div>
-      <form class="form">
+      <form class="form" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
         <div class="form-group row">
           <div class="col-lg-6">
             <label>Inventory Name <span class="text-danger">*</span></label>
@@ -34,6 +35,7 @@
               class="form-control"
               placeholder="Inventory Name"
               name="name"
+              formControlName="name"
               [(ngModel)]="model.name"
             />
           </div>
@@ -44,15 +46,19 @@
               type="number"
               class="form-control"
               placeholder="Stock Quantity"
+              name="stockQuantity"
+              formControlName="stockQuantity"
               [(ngModel)]="model.stockQuantity"
             />
           </div>
           <div class="col-lg-6 mt-3">
             <label>Brand Name <span class="text-danger">*</span></label>
             <input
-              type="number"
+              type="text"
               class="form-control"
               placeholder="Brand Name"
+              name="brand"
+              formControlName="brand"
               [(ngModel)]="model.brand"
             />
           </div>
@@ -61,9 +67,11 @@
           <div class="col-lg-12">
             <label>Category Name <span class="text-danger">*</span></label>
             <input
-              type="number"
+              type="text"
               class="form-control"
               placeholder="Category Name"
+              name="category"
+              formControlName="category"
               [(ngModel)]="model.category"
             />
           </div>

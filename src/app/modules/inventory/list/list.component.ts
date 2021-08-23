@@ -14,6 +14,7 @@ export class ListComponent implements OnInit {
   @ViewChild('dt') table: Table | undefined;
 
   inventories: Inventory[] = [];
+  drawerTermAdd = false;
 
   constructor(
     private primengConfig: PrimeNGConfig,
@@ -56,4 +57,17 @@ export class ListComponent implements OnInit {
               }
           }
     }
+
+
+  changeDrawerTerm(val: boolean) {
+    this.drawerTermAdd = val;
+  }
+
+  refreshAfterTermComponentSubmit(val: any) {
+    console.log('asdasdasd', val);
+    if (val){
+      this.inventories.push(val);
+    }
+  }
+
 }

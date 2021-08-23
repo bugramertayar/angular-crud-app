@@ -16,9 +16,10 @@
   currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries."
 >
   <ng-template pTemplate="caption">
-    <div class="table-header" [(ngModel)]="inventories">
+    <div class="table-header">
       <div>
         <p-button
+          (click)="drawerTermAdd = !drawerTermAdd"
           label="Add Inventory"
           icon="pi pi-plus"
           iconPos="left"
@@ -87,6 +88,10 @@
 </p-table>
 
 
-<app-add>
-  
+<app-add
+  *ngIf="drawerTermAdd"
+  [isDrawerOpened]="drawerTermAdd"
+  (drawerClosed)="changeDrawerTerm($event)"
+  (submittedForm)="refreshAfterTermComponentSubmit($event)"
+>
 </app-add>
