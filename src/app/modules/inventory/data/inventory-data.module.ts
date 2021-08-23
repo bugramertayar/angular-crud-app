@@ -14,12 +14,14 @@ import {ToastModule} from "primeng/toast";
 import {InputTextModule} from "primeng/inputtext";
 import {ProgressBarModule} from "primeng/progressbar";
 import {AddComponent} from "../add/add.component";
+import {EditComponent} from "../edit/edit.component";
 
 
 @NgModule({
   declarations: [
     ListComponent,
     AddComponent,
+    EditComponent,
   ],
   imports: [
     CommonModule,

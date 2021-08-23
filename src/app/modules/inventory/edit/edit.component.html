@@ -11,7 +11,7 @@
     <div class="position-relative">
       <div class="d-flex justify-content-between align-items-center pb-5">
         <div class="d-flex justify-content-center align-items-center">
-          <span class="font-weight-bold" style="font-size: 2.5rem">Inventory Add</span>
+          <span class="font-weight-bold" style="font-size: 2.5rem">Inventory Edit</span>
         </div>
         <div>
           <button
@@ -20,7 +20,7 @@
             (click)="onSubmit()"
             [disabled]="formGroup.invalid"
           >
-            Kaydet
+            Save
           </button>
         </div>
       </div>
@@ -34,7 +34,6 @@
               placeholder="Inventory Name"
               name="name"
               formControlName="name"
-              [(ngModel)]="model.name"
             />
           </div>
 
@@ -46,7 +45,6 @@
               placeholder="Stock Quantity"
               name="stockQuantity"
               formControlName="stockQuantity"
-              [(ngModel)]="model.stockQuantity"
             />
           </div>
           <div class="col-lg-6 mt-3">
@@ -57,7 +55,6 @@
               placeholder="Brand Name"
               name="brand"
               formControlName="brand"
-              [(ngModel)]="model.brand"
             />
           </div>
         </div>
@@ -70,7 +67,6 @@
               placeholder="Category Name"
               name="category"
               formControlName="category"
-              [(ngModel)]="model.category"
             />
           </div>
         </div>

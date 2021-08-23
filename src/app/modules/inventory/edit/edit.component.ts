@@ -4,9 +4,9 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
 import {Inventory} from "../data/services/inventory.model";
 
 @Component({
-  selector: 'app-add',
-  templateUrl: './add.component.html',
-  styleUrls: ['./add.component.css'],
+  selector: 'app-edit',
+  templateUrl: './edit.component.html',
+  styleUrls: ['./edit.component.css'],
   animations: [
     trigger('sideDrawerOpenClose', [
       state('sideDrawerOpen', style({
@@ -26,22 +26,16 @@ import {Inventory} from "../data/services/inventory.model";
     ]),
   ],
 })
-export class AddComponent implements OnInit, OnChanges {
+export class EditComponent implements OnInit, OnChanges {
   // Inputs
   @Input() isDrawerOpened: boolean | undefined;
+  @Input() inventoryObject: Inventory = {};
   @Output() drawerClosed = new EventEmitter<boolean>();
   @Output() submittedForm = new EventEmitter<object>();
   sideDrawerOpened: any;
 
-  model: Inventory = {
-    name: '',
-    id: null,
-    stockQuantity: 0,
-    brand: '',
-    category: '',
-    creationTime: null,
-    updatedTime: null,
-  };
+
+  inventories: Inventory[] = [];
   // @ts-ignore
   formGroup: FormGroup;
 
@@ -59,27 +53,31 @@ export class AddComponent implements OnInit, OnChanges {
 
   loadForm() {
     this.formGroup = this.fb.group({
-      name: [this.model.name, Validators.compose([
+      id: [this.inventoryObject.id],
+      name: [this.inventoryObject.name, Validators.compose([
         Validators.required,
         Validators.maxLength(250)
       ])],
-      stockQuantity: [this.model.stockQuantity, Validators.compose([
+      stockQuantity: [this.inventoryObject.stockQuantity, Validators.compose([
         Validators.required,
         Validators.min(1)
       ])],
-      brand: [this.model.brand, Validators.compose([
+      brand: [this.inventoryObject.brand, Validators.compose([
         Validators.required,
       ])],
-      category: [this.model.category, Validators.compose([
+      category: [this.inventoryObject.category, Validators.compose([
         Validators.required,
       ])],
+      creationTime: [this.inventoryObject.creationTime],
     });
   }
 
   onSubmit() {
-    this.model.id = Math.random() * 1000;
-    this.model.creationTime = new Date();
-    this.submittedForm.emit(this.model);
+    let updatedObject: Inventory = {
+      ...this.formGroup.value,
+      updatedTime: new Date()
+    }
+    this.submittedForm.emit(updatedObject);
     this.drawerClosed.emit(false);
   }
 

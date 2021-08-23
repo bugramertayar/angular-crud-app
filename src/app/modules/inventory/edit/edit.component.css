@@ -43,3 +43,14 @@
     width: 100vw !important;
   }
 }
+
+.back__icon {
+  cursor: pointer !important;
+  position: absolute;
+  left: -2.5rem;
+  color: #3427FF;
+}
+
+img {
+  height: 25rem;
+}

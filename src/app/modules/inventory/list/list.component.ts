@@ -14,7 +14,10 @@ export class ListComponent implements OnInit {
   @ViewChild('dt') table: Table | undefined;
 
   inventories: Inventory[] = [];
-  drawerTermAdd = false;
+  drawerInventoryAdd = false;
+  drawerInventoryEdit = false;
+  // @ts-ignore
+  inventoryToSend;
 
   constructor(
     private primengConfig: PrimeNGConfig,
@@ -58,16 +61,42 @@ export class ListComponent implements OnInit {
           }
     }
 
-
-  changeDrawerTerm(val: boolean) {
-    this.drawerTermAdd = val;
+  // Add Drawer Functions Start
+  changeDrawerAdd(val: boolean) {
+    this.drawerInventoryAdd = val;
   }
 
-  refreshAfterTermComponentSubmit(val: any) {
-    console.log('asdasdasd', val);
+  refreshAfterInventoryAddSubmit(val: any) {
     if (val){
       this.inventories.push(val);
     }
   }
+  // Add Drawer Functions End
+
+
+  // Edit Drawer Functions Start
+
+  changeDrawerEdit(val: boolean) {
+    this.drawerInventoryEdit = val;
+  }
+
+  changeDrawerInventoryEdit(obj: string) {
+    this.inventoryToSend = obj;
+    this.drawerInventoryEdit = !this.drawerInventoryEdit;
+  }
+
+  refreshAfterInventoryEditSubmit(val: any) {
+    if (val){
+      let updatedInventory = this.inventories.find(inventory => inventory.id === val.id);
+      for (let [index, item] of this.inventories.entries()){
+        if (item.id === val.id){
+          this.inventories[index] = val;
+          break;
+        }
+      }
+    }
+  }
+
+  // Edit Drawer Functions End
 
 }

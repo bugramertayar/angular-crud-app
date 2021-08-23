@@ -19,7 +19,7 @@
     <div class="table-header">
       <div>
         <p-button
-          (click)="drawerTermAdd = !drawerTermAdd"
+          (click)="drawerInventoryAdd = !drawerInventoryAdd"
           label="Add Inventory"
           icon="pi pi-plus"
           iconPos="left"
@@ -69,15 +69,21 @@
           Creation Time
         </div>
       </th>
+      <th pSortableColumn="updatedTime">
+        <div class="p-d-flex p-jc-between p-ai-center">
+          Updated Time
+        </div>
+      </th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-inventory>
-    <tr>
+    <tr (click)="changeDrawerInventoryEdit(inventory)">
       <td>{{inventory.name}}</td>
       <td>{{inventory.stockQuantity}}</td>
       <td>{{inventory.brand}}</td>
       <td>{{inventory.category}}</td>
       <td><span class="badge badge-info">{{inventory.creationTime}}</span></td>
+      <td><span class="badge badge-info">{{inventory.updatedTime}}</span></td>
     </tr>
   </ng-template>
   <ng-template pTemplate="emptymessage">
@@ -89,9 +95,18 @@
 
 
 <app-add
-  *ngIf="drawerTermAdd"
-  [isDrawerOpened]="drawerTermAdd"
-  (drawerClosed)="changeDrawerTerm($event)"
-  (submittedForm)="refreshAfterTermComponentSubmit($event)"
+  *ngIf="drawerInventoryAdd"
+  [isDrawerOpened]="drawerInventoryAdd"
+  (drawerClosed)="changeDrawerAdd($event)"
+  (submittedForm)="refreshAfterInventoryAddSubmit($event)"
 >
 </app-add>
+
+<app-edit
+  *ngIf="drawerInventoryEdit"
+  [isDrawerOpened]="drawerInventoryEdit"
+  [inventoryObject]="inventoryToSend"
+  (drawerClosed)="changeDrawerEdit($event)"
+  (submittedForm)="refreshAfterInventoryEditSubmit($event)"
+>
+</app-edit>
