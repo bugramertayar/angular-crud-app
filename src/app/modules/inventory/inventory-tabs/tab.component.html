@@ -1,0 +1,33 @@
+<ul class="nav nav-tabs" style="margin-bottom: 0px;" role="tablist">
+  <li class="nav-item cursor-pointer" (click)="changeListTab(tabs.DUMMY)">
+    <a
+      class="nav-link"
+      data-toggle="tab"
+      role="button"
+      [attr.aria-selected]="activeTabId === tabs.DUMMY"
+      [class.active]="activeTabId === tabs.DUMMY"
+    >
+      Inventories Fake Data
+    </a>
+  </li>
+  <li class="cursor-pointer" (click)="changeListTab(tabs.HTTP)">
+    <a
+      class="nav-link"
+      data-toggle="tab"
+      role="tab"
+      [attr.aria-selected]="activeTabId === tabs.HTTP"
+      [class.active]="activeTabId === tabs.HTTP"
+    >
+      Products HTTP
+    </a>
+  </li>
+</ul>
+
+<ng-container *ngIf="activeTabId === tabs.HTTP">
+  <app-http-list></app-http-list>
+</ng-container>
+<ng-container *ngIf="activeTabId === tabs.DUMMY">
+  <app-list></app-list>
+</ng-container>
+
+

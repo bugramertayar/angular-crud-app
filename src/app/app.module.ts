@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {InventoriesService} from "./modules/inventory/data/services/inventories-service";
 import {HttpClientModule} from "@angular/common/http";
+import {InventoriesHttpService} from "./modules/inventory/inventory-http/services/inventories-http-service";
 
 @NgModule({
   declarations: [
@@ -16,7 +17,7 @@ import {HttpClientModule} from "@angular/common/http";
     AppRoutingModule,
     HttpClientModule,
   ],
-  providers: [InventoriesService],
+  providers: [InventoriesService, InventoriesHttpService ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

@@ -15,6 +15,8 @@ import {InputTextModule} from "primeng/inputtext";
 import {ProgressBarModule} from "primeng/progressbar";
 import {AddComponent} from "../add/add.component";
 import {EditComponent} from "../edit/edit.component";
+import {InventoryTabComponent} from "../inventory-tabs/tab.component";
+import {InventoryHttpComponent} from "../inventory-http/inventory-http.component";
 
 
 @NgModule({
@@ -22,6 +24,8 @@ import {EditComponent} from "../edit/edit.component";
     ListComponent,
     AddComponent,
     EditComponent,
+    InventoryTabComponent,
+    InventoryHttpComponent,
   ],
   imports: [
     CommonModule,

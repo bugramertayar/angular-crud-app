@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {InventoryComponent} from './inventory.component';
-import {ListComponent} from './list/list.component';
+import {InventoryTabComponent} from "./inventory-tabs/tab.component";
+import {InventoryComponent} from "./inventory.component";
 
 const routes: Routes = [
   {
@@ -10,7 +10,7 @@ const routes: Routes = [
     children: [
       {
         path: 'list',
-        component: ListComponent,
+        component: InventoryTabComponent,
       },
       { path: '', redirectTo: 'list', pathMatch: 'full' },
     ],

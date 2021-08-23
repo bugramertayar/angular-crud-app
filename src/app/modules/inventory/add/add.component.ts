@@ -77,7 +77,7 @@ export class AddComponent implements OnInit, OnChanges {
   }
 
   onSubmit() {
-    this.model.id = Math.random() * 1000;
+    this.model.id =  Math.floor(Math.random() * 1000);
     this.model.creationTime = new Date();
     this.submittedForm.emit(this.model);
     this.drawerClosed.emit(false);

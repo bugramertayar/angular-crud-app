@@ -30,36 +30,6 @@ export class ListComponent implements OnInit {
     this.inventoriesService.getInventories().then(data => this.inventories = data);
   }
 
-  /*loadInventory(event: LazyLoadEvent) {
-        const sorting = event.sortField;
-        const sortOrder = event.sortOrder;
-        if (sorting) { // Sorting Table
-          if (sortOrder === 1){
-            // @ts-ignore
-            this.inventories = this.inventories.sort((a,b) => (a[sorting] > b[sorting]) ? 1 : ((b[sorting] > a[sorting]) ? -1 : 0));
-          }else if(sortOrder === -1){
-            // @ts-ignore
-            this.inventories = this.inventories.sort((a,b) => (a[sorting] > b[sorting]) ? -1 : ((b[sorting] > a[sorting]) ? 1 : 0));
-          }
-        }
-        else { // Filter Table
-              // @ts-ignore
-              if (event.filters.brand[0].value){
-                // @ts-ignore
-                this.inventories = this.inventories.filter(inventory => inventory.brand.includes( event.filters.brand[0].value));
-              }
-              // @ts-ignore
-              if (event.filters.category[0].value){
-                // @ts-ignore
-                this.inventories = this.inventories.filter(inventory => inventory.category.includes( event.filters.category[0].value));
-              }
-              // @ts-ignore
-              if (event.filters.name[0].value){
-                // @ts-ignore
-                this.inventories = this.inventories.filter(inventory => inventory.name.includes( event.filters.name[0].value));
-              }
-          }
-    }*/
 
   // Add Drawer Functions Start
   changeDrawerAdd(val: boolean) {
