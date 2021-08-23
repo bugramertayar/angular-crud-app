@@ -6,9 +6,6 @@
   [rows]="10"
   [showCurrentPageReport]="true"
   [rowsPerPageOptions]="[10,25,50]"
-  [lazy]="true"
-  [lazyLoadOnInit]="false"
-  (onLazyLoad)="loadInventory($event)"
   [paginator]="true"
   [totalRecords]="inventories.length"
   [filterDelay]="1000"
@@ -30,12 +27,17 @@
 
   <ng-template pTemplate="header">
     <tr>
+      <th pSortableColumn="updatedTime">
+        <div class="p-d-flex p-jc-between p-ai-center">
+          ID
+        </div>
+      </th>
       <th pSortableColumn="name">
         <div class="p-d-flex p-jc-between p-ai-center">
           Name
           <div>
             <p-sortIcon field="name"></p-sortIcon>
-            <p-columnFilter type="text" field="name" display="menu" class="p-ml-auto" [showMatchModes]="false" [showOperator]="false" [showAddButton]="false"></p-columnFilter>
+            <p-columnFilter type="text" field="name" display="menu" class="p-ml-auto" [showOperator]="false" [showAddButton]="false"></p-columnFilter>
           </div>
         </div>
       </th>
@@ -50,7 +52,7 @@
           <div>
             <p-sortIcon field="brand"></p-sortIcon>
             <p-columnFilter type="text" field="brand" display="menu"
-                            class="p-ml-auto"  [showMatchModes]="false" [showOperator]="false" [showAddButton]="false"></p-columnFilter>
+                            class="p-ml-auto"  [showOperator]="false" [showAddButton]="false"></p-columnFilter>
           </div>
         </div>
       </th>
@@ -60,7 +62,7 @@
           <div>
             <p-sortIcon field="category"></p-sortIcon>
             <p-columnFilter type="text" field="category" display="menu"
-                            class="p-ml-auto"  [showMatchModes]="false" [showOperator]="false" [showAddButton]="false"></p-columnFilter>
+                            class="p-ml-auto"  [showOperator]="false" [showAddButton]="false"></p-columnFilter>
           </div>
         </div>
       </th>
@@ -78,6 +80,7 @@
   </ng-template>
   <ng-template pTemplate="body" let-inventory>
     <tr (click)="changeDrawerInventoryEdit(inventory)">
+      <td>{{inventory.id}}</td>
       <td>{{inventory.name}}</td>
       <td>{{inventory.stockQuantity}}</td>
       <td>{{inventory.brand}}</td>
@@ -88,7 +91,7 @@
   </ng-template>
   <ng-template pTemplate="emptymessage">
     <tr>
-      <td colspan="6">Inventory Not Found.</td>
+      <td colspan="7">Inventory Not Found.</td>
     </tr>
   </ng-template>
 </p-table>

@@ -30,7 +30,7 @@ export class ListComponent implements OnInit {
     this.inventoriesService.getInventories().then(data => this.inventories = data);
   }
 
-  loadInventory(event: LazyLoadEvent) {
+  /*loadInventory(event: LazyLoadEvent) {
         const sorting = event.sortField;
         const sortOrder = event.sortOrder;
         if (sorting) { // Sorting Table
@@ -59,7 +59,7 @@ export class ListComponent implements OnInit {
                 this.inventories = this.inventories.filter(inventory => inventory.name.includes( event.filters.name[0].value));
               }
           }
-    }
+    }*/
 
   // Add Drawer Functions Start
   changeDrawerAdd(val: boolean) {
