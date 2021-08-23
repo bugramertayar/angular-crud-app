@@ -1,0 +1,74 @@
+<div
+  class="screen__container"
+  [ngStyle]="{'display': sideDrawerOpened ? null : 'none'}"
+>
+  <div
+    class="container__backdrop"
+    (click)="closeModelAddDrawer()"
+  >
+  </div>
+  <div [@sideDrawerOpenClose]="sideDrawerOpened ? 'sideDrawerOpen' : 'sideDrawerClosed'" class="import__side-drawer">
+    <div class="position-relative">
+      <div class="d-flex justify-content-between align-items-center pb-5">
+        <div class="d-flex justify-content-center align-items-center">
+          <span (click)="closeModelAddDrawer()"
+                class="fas fa-chevron-left fa-2x back__icon"></span>
+          <span class="font-weight-bold" style="font-size: 2.5rem">Inventory Add</span>
+        </div>
+        <div>
+          <button
+            class="btn btn-tsk-save font-weight-bold text-uppercase"
+            data-wizard-type="action-submit"
+            (click)="onSubmit()"
+          >
+            Kaydet
+          </button>
+        </div>
+      </div>
+      <form class="form">
+        <div class="form-group row">
+          <div class="col-lg-6">
+            <label>Inventory Name <span class="text-danger">*</span></label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Inventory Name"
+              name="name"
+              [(ngModel)]="model.name"
+            />
+          </div>
+
+          <div class="col-lg-6">
+            <label>Stock Quantity <span class="text-danger">*</span></label>
+            <input
+              type="number"
+              class="form-control"
+              placeholder="Stock Quantity"
+              [(ngModel)]="model.stockQuantity"
+            />
+          </div>
+          <div class="col-lg-6 mt-3">
+            <label>Brand Name <span class="text-danger">*</span></label>
+            <input
+              type="number"
+              class="form-control"
+              placeholder="Brand Name"
+              [(ngModel)]="model.brand"
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-lg-12">
+            <label>Category Name <span class="text-danger">*</span></label>
+            <input
+              type="number"
+              class="form-control"
+              placeholder="Category Name"
+              [(ngModel)]="model.category"
+            />
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

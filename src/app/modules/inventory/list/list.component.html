@@ -1,0 +1,92 @@
+<p-table
+  #dt
+  dataKey="id"
+  [value]="inventories"
+  [rowHover]="true"
+  [rows]="10"
+  [showCurrentPageReport]="true"
+  [rowsPerPageOptions]="[10,25,50]"
+  [lazy]="true"
+  [lazyLoadOnInit]="false"
+  (onLazyLoad)="loadInventory($event)"
+  [paginator]="true"
+  [totalRecords]="inventories.length"
+  [filterDelay]="1000"
+  [pageLinks]="3"
+  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries."
+>
+  <ng-template pTemplate="caption">
+    <div class="table-header" [(ngModel)]="inventories">
+      <div>
+        <p-button
+          label="Add Inventory"
+          icon="pi pi-plus"
+          iconPos="left"
+        ></p-button>
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="header">
+    <tr>
+      <th pSortableColumn="name">
+        <div class="p-d-flex p-jc-between p-ai-center">
+          Name
+          <div>
+            <p-sortIcon field="name"></p-sortIcon>
+            <p-columnFilter type="text" field="name" display="menu" class="p-ml-auto" [showMatchModes]="false" [showOperator]="false" [showAddButton]="false"></p-columnFilter>
+          </div>
+        </div>
+      </th>
+      <th pSortableColumn="stockQuantity">
+        <div class="p-d-flex p-jc-between p-ai-center">
+          Stock Quantity
+        </div>
+      </th>
+      <th pSortableColumn="brand">
+        <div class="p-d-flex p-jc-between p-ai-center">
+          Brand
+          <div>
+            <p-sortIcon field="brand"></p-sortIcon>
+            <p-columnFilter type="text" field="brand" display="menu"
+                            class="p-ml-auto"  [showMatchModes]="false" [showOperator]="false" [showAddButton]="false"></p-columnFilter>
+          </div>
+        </div>
+      </th>
+      <th pSortableColumn="category">
+        <div class="p-d-flex p-jc-between p-ai-center">
+          Category
+          <div>
+            <p-sortIcon field="category"></p-sortIcon>
+            <p-columnFilter type="text" field="category" display="menu"
+                            class="p-ml-auto"  [showMatchModes]="false" [showOperator]="false" [showAddButton]="false"></p-columnFilter>
+          </div>
+        </div>
+      </th>
+      <th pSortableColumn="creationTime">
+        <div class="p-d-flex p-jc-between p-ai-center">
+          Creation Time
+        </div>
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-inventory>
+    <tr>
+      <td>{{inventory.name}}</td>
+      <td>{{inventory.stockQuantity}}</td>
+      <td>{{inventory.brand}}</td>
+      <td>{{inventory.category}}</td>
+      <td><span class="badge badge-info">{{inventory.creationTime}}</span></td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="emptymessage">
+    <tr>
+      <td colspan="5">Inventory Not Found.</td>
+    </tr>
+  </ng-template>
+</p-table>
+
+
+<app-add>
+  
+</app-add>
