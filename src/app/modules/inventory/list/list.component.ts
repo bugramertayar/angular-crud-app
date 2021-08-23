@@ -87,7 +87,6 @@ export class ListComponent implements OnInit {
 
   refreshAfterInventoryEditSubmit(val: any) {
     if (val){
-      let updatedInventory = this.inventories.find(inventory => inventory.id === val.id);
       for (let [index, item] of this.inventories.entries()){
         if (item.id === val.id){
           this.inventories[index] = val;
